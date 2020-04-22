@@ -7,9 +7,17 @@ import Detail from "./components/Detail";
 
 
 class App extends Component {
+  timer = "";
   async componentDidMount(){
     await this.props.fetchReports()
+    this.timer = setInterval(
+      () =>
+      this.props.fetchReports(),300000
+    );
     
+  }
+  componentWillUnmount(){
+    clearInterval(this.timer);
   }
   render() {
     return (
