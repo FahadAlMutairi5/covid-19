@@ -105,7 +105,7 @@ class index extends React.Component {
                                 <div className="row">
                                     <div className="col-lg-6 col-6 border p-3" style={{backgroundColor: 'rgb(204, 202, 202)'}}>
                                         <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'rgb(230, 12, 0)', textShadow: '1px 1px 0 #000'}}>{this.numberWithCommas(city.Info.infected) < 0 ? 0 : this.numberWithCommas(city.Info.infected)}</span>
-                                        <p className="card-text">اجمالي الحلات</p> 
+                                        <p className="card-text">أجمالي الحالات</p> 
                                     </div>
                                     <div className="col-lg-6 col-6 border p-3" style={{backgroundColor: 'rgb(204, 202, 202)'}}>
                                         <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'rgb(230, 152, 0)', textShadow: '1px 1px 0 #000'}}>{this.numberWithCommas(city.Info.active) < 0 ? 0 : this.numberWithCommas(city.Info.active)}</span>
