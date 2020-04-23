@@ -65,7 +65,7 @@ class index extends React.Component {
                     بالتعاون مع APIFY 
                     <br/><a href="https://apify.com/covid-19" target="_blank" rel="noopener noreferrer"> APIFY </a>       
                     <br/> من تصميم المبرمج : فهد المطيري
-                    <br/><a href="https://github.com/FahadAlMutairi5" target="_blank" rel="noopener noreferrer">Github</a>    
+                    <br/><a href="https://github.com/FahadAlMutairi5" target="_blank" rel="noopener noreferrer">Github</a> ||   <a href="https://twitter.com/Des_f_b" target="_blank" rel="noopener noreferrer">Twitter</a> 
                 </div>
             </div>
             );  
