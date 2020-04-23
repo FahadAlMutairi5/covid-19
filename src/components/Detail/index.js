@@ -99,7 +99,7 @@ class index extends React.Component {
             {
                 filterData && filterData.map(city => 
                     (
-                        <div className="card mt-3" key={city.nameOfCity} id={city.nameOfCity}>
+                        <div className="card mt-3 animated bounceInUp" key={city.nameOfCity} id={city.nameOfCity}>
                             <h4 className="card-title mt-4 text-center">{city.nameOfCity}</h4>
                             <div className="card-body">
                                 <div className="row">
