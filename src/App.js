@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import * as actionCreators from "./store/actions/";
 import Home from "./components/Home";
 import Detail from "./components/Detail";
-
+// import News from "./components/News";
 
 class App extends Component {
   timer = "";
@@ -25,6 +25,7 @@ class App extends Component {
         <Switch>
           <Route path="/Home" component={Home}/>
           <Route path="/Detail" component={Detail}/>
+          {/* <Route path="/News" component={News}/> */}
           <Redirect to="/Home"/>
         </Switch>
       </div>

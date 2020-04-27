@@ -89,6 +89,8 @@ class index extends React.Component {
                                     filterData && filterData.map(city => (
                                         <option name="city" key={city.nameOfCity} value={city.nameOfCity}>{city.nameOfCity}</option>
                                         )
+                                    ).sort(
+                                        (a, b) => a.key.localeCompare(b.key)
                                     )
                                 }
                             </select>
