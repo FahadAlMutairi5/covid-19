@@ -2,15 +2,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { TwitterTimelineEmbed } from 'react-twitter-embed';
+import ReactLoading from 'react-loading';
 
 class index extends React.Component {
     state = {
-        twitterAcoount: 'SaudiMOH'
+        twitterAcoount: 'SaudiMOH',
+        loading:true
     }
     changeHandler = e => {
         this.setState({ twitterAcoount: e.target.value });
     };
-    componentDidUpdate(){}
+    // componentDidUpdate(){}
   render() {
             return ( 
                 <div className="form-group col-lg-8 col-12 mx-auto my-5 text-center">
@@ -21,7 +23,7 @@ class index extends React.Component {
                         </Link> 
                     </div>
                     <div className="col-10 mt-2 text-center">
-                        <h5 className="card-title">أخر أخبار فايروس كورونا</h5> 
+                        <h5 className="card-title">أخبار فايروس كورونا</h5> 
                     </div>
                     </div>
                     <div className="row">
@@ -36,27 +38,60 @@ class index extends React.Component {
                             </select> 
                         </div>
                     </div>
-                    {
-                        this.state.twitterAcoount === 'SaudiMOH' && <TwitterTimelineEmbed
-                        sourceType="profile"
-                        screenName={this.state.twitterAcoount}
-                        options={{height: 650}}
-                    />
-                    }
-                    {
-                        this.state.twitterAcoount === 'SPAregions' && <TwitterTimelineEmbed
-                        sourceType="profile"
-                        screenName={this.state.twitterAcoount}
-                        options={{height: 650}}
-                    />
-                    }
-                    {
-                        this.state.twitterAcoount === 'MOISaudiArabia' && <TwitterTimelineEmbed
-                        sourceType="profile"
-                        screenName={this.state.twitterAcoount}
-                        options={{height: 650}}
-                    />
-                    }
+                    <div className="mt-4">
+                        {
+                            this.state.twitterAcoount === 'SaudiMOH'  
+                            &&
+                            (
+                                <TwitterTimelineEmbed
+                                    sourceType="profile"
+                                    screenName={this.state.twitterAcoount}
+                                    options={{height: 650}}
+                                    placeholder={
+                                        <div className="col-12 mt-5" style={{display: 'flex',
+                                                        alignItems: 'center',
+                                                        justifyContent: 'center'}}>
+                                                        <ReactLoading type='spinningBubbles' color="#48D1CC" />
+                                                    </div>
+                                    }
+                                    noHeader
+                                    noFooter
+                                    />
+                            ) 
+                        }
+                        {
+                            this.state.twitterAcoount === 'SPAregions' && <TwitterTimelineEmbed
+                            sourceType="profile"
+                            screenName={this.state.twitterAcoount}
+                            options={{height: 650}}
+                            placeholder={
+                                        <div className="col-12 mt-5" style={{display: 'flex',
+                                                        alignItems: 'center',
+                                                        justifyContent: 'center'}}>
+                                                        <ReactLoading type='spinningBubbles' color="#48D1CC" />
+                                                    </div>
+                                    }
+                                    noHeader
+                                    noFooter
+                        />
+                        }
+                        {
+                            this.state.twitterAcoount === 'MOISaudiArabia' && <TwitterTimelineEmbed
+                            sourceType="profile"
+                            screenName={this.state.twitterAcoount}
+                            options={{height: 650}}
+                            placeholder={
+                                        <div className="col-12 mt-5" style={{display: 'flex',
+                                                        alignItems: 'center',
+                                                        justifyContent: 'center'}}>
+                                                        <ReactLoading type='spinningBubbles' color="#48D1CC" />
+                                                    </div>
+                                    }  
+                                    noHeader
+                                    noFooter
+                        />
+                        }
+                    </div>
                     
                 </div>
             )
