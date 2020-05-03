@@ -1,1 +1,1 @@
-export { fetchReports } from "./reportActions";
+export { fetchReports , fetchHestoryReports } from "./reportActions";

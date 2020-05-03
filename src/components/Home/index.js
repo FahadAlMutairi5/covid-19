@@ -58,10 +58,18 @@ class index extends React.Component {
                         <button className="btn btn-block btn-info mt-2 p-3"> أعداد الحالات لكل مدينة  </button>
                     </Link>
                 </div>
-                <div className="text-center mt-1">
-                    <Link to="/News" style={{ textDecoration: 'none' }}>
-                        <button className="btn btn-block btn-info mt-2 p-3"> أخبار فايروس كورونا  </button>
-                    </Link>
+                <div className="row">
+                    <div className="text-center mt-1 col-6">
+                        <Link to="/News" style={{ textDecoration: 'none' }}>
+                            <button className="btn btn-block btn-info mt-2 p-3"> أخبار فايروس كورونا  <br/> </button>
+                            
+                        </Link>
+                    </div>
+                    <div className="text-center mt-1 col-6">
+                        <Link to="/Hestory" style={{ textDecoration: 'none' }}>
+                            <button className="btn btn-block btn-info mt-2 p-3"> إحصائيات  </button>
+                        </Link>
+                    </div>
                 </div>
                 <div className="text-center text-muted mt-3">
                     مصدر المعلومات من موقع وزارة الصحة السعودية 

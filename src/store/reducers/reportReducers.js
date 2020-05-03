@@ -5,7 +5,10 @@ const initialState = {
     filterData: null,
     data:null,
     fullData:null,
-    loading: true
+    loading: true,
+    loadingH: true,
+    hestoryData: null,
+    cityHestoryData:null,
 };
 
 const reducer = (state = initialState, action) => {
@@ -24,8 +27,7 @@ const reducer = (state = initialState, action) => {
             }
             array.push(objectOfData);
           }
-        }
-        
+        }        
         return {
           ...state,
           data: array,
@@ -33,6 +35,57 @@ const reducer = (state = initialState, action) => {
           fullData:dataR,
           loading: false
         };
+
+      case actionTypes.FETCH_HESTORY_COVID_19:
+          let arabicHESTORY = /[\u0600-\u06FF]/;
+          let dataRHESTORY = action.payload
+          let arrayH = []
+          for (let x in dataRHESTORY) {
+            let parentObject = {}
+            parentObject["date"] = new Date(dataRHESTORY[x]['lastUpdatedAtApify']).toISOString().split('T')[0]
+            parentObject["lastUpdatedAtApify"] = dataRHESTORY[x]['lastUpdatedAtApify']
+            parentObject["infected"] = dataRHESTORY[x]['infected']
+            parentObject["recovered"] = dataRHESTORY[x]['recovered']
+            parentObject["deceased"] = dataRHESTORY[x]['deceased']
+            parentObject["active"] = dataRHESTORY[x]['active']
+
+            let arrayHESTORY = []
+
+            for (let y in dataRHESTORY[x]) {
+              let objectOfData = {}
+              if(arabicHESTORY.test(y)){
+                objectOfData["nameOfCity"] = y
+                objectOfData["Info"] = dataRHESTORY[x][y]
+              }
+              if (Object.keys(objectOfData).length > 1){
+                arrayHESTORY.push(objectOfData);
+              }
+            }
+            parentObject["citiesH"] = arrayHESTORY
+            if (arrayHESTORY.length > 0){
+              arrayH.push(parentObject)
+            }
+          } 
+
+          
+          var obj = {};
+
+          for ( let i=0; i < arrayH.length; i++ ){
+            obj[arrayH[i]['date']] = arrayH[i];
+          }
+
+          arrayH = []
+
+          for ( var key in obj )
+            arrayH.push(obj[key]);
+
+          return {
+            ...state,
+            cityHestoryData: arrayH,
+            hestoryData:dataRHESTORY,
+            loadingH: false
+          };
+
       default:
         return state;
     }

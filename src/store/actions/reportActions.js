@@ -19,3 +19,18 @@ export const fetchReports = () => {
     }
   };
 };
+
+export const fetchHestoryReports = () => {
+  return async dispatch => {
+    try {
+      let res = await instance.get("datasets/OeaEEGdhvUSkXRrWU/items?format=json&clean=1");
+      const data = res.data;
+      dispatch({
+        type: actionTypes.FETCH_HESTORY_COVID_19,
+        payload: data
+      });
+    } catch (error) {
+      console.log("Something went wrong with ", error);
+    }
+  };
+};
