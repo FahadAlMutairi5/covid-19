@@ -27,8 +27,10 @@ class index extends React.Component {
             return (
             <div className="form-group col-lg-8 col-12 mx-auto my-5 text-right text-center">
                 <h3>حالات فايروس كورونا في  <br/> المملكة العربية السعودية</h3>
-                
-                <div className="card mt-4">
+                <div className="text-center mt-2" style={{fontSize:'10px', color:'rgb(230, 12, 0)'}}>
+                * يوجد تأخير في عرض البيانات من المصدر *
+                </div>
+                <div className="card mt-2">
                     <div className="card-body">
                         <div className="row">
                             <div className="col-lg-6 col-6 border p-3 animated bounceInRight" style={{backgroundColor: 'rgb(204, 202, 202)'}}>
