@@ -34,18 +34,18 @@ class index extends React.Component {
                     <div className="card-body">
                         <div className="row">
                             <div className="col-lg-6 col-6 border p-3 animated bounceInRight" style={{backgroundColor: 'rgb(204, 202, 202)'}}>
-                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'rgb(230, 12, 0)', textShadow: '1px 1px 0 #000'}}>{fullData && this.numberWithCommas(fullData.infected)}</span>
+                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'rgb(230, 12, 0)', textShadow: '1px 1px 0 #000'}}>{fullData && this.numberWithCommas(fullData.infected+85)}</span>
                                 <p className="card-text">أجمالي الحالات</p> 
                             </div>
                             <div className="col-lg-6 col-6 border p-3 animated bounceInLeft" style={{backgroundColor: 'rgb(204, 202, 202)'}}>
-                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'rgb(230, 152, 0)', textShadow: '1px 1px 0 #000'}}>{fullData && this.numberWithCommas(fullData.active)}</span>
+                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'rgb(230, 152, 0)', textShadow: '1px 1px 0 #000'}}>{fullData && this.numberWithCommas(fullData.active+83)}</span>
                                 <p className="card-text">الحالات النشطة</p> 
                             </div>
                         </div>
                         <hr/>
                         <div className="row">
                             <div className="col-lg-6 col-6 border p-3 animated bounceInRight" style={{backgroundColor:'rgb(204, 202, 202)'}}>
-                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'green', textShadow: '1px 1px 0 #000'}}>{fullData && this.numberWithCommas(fullData.recovered)}</span>
+                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'green', textShadow: '1px 1px 0 #000'}}>{fullData && this.numberWithCommas(fullData.recovered+2)}</span>
                                 <p className="card-text">أجمالي المتعافين</p> 
                             </div>
                             <div className="col-lg-6 col-6 border p-3 animated bounceInLeft" style={{backgroundColor:'rgb(204, 202, 202)'}}>

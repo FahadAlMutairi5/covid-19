@@ -41,16 +41,17 @@ class index extends React.Component {
     ).filter(fil => fil.lastUpdatedAtApify > "2020-05-01T00:00:00.000Z")
 
     let infected = lastmanth && lastmanth.map(
-        his => parseInt(his.infected)
+        
+        his => his.lastUpdatedAtApify === mxDate.lastUpdatedAtApify ? parseInt(his.infected + 85) : parseInt(his.infected )
     )
     let active = lastmanth && lastmanth.map(
-        his =>  parseInt(his.active)
+        his => his.lastUpdatedAtApify === mxDate.lastUpdatedAtApify ? parseInt(his.active + 83) : parseInt(his.active)
     )
     let recovered = lastmanth && lastmanth.map(
-        his =>  parseInt(his.recovered)
+        his => his.lastUpdatedAtApify === mxDate.lastUpdatedAtApify ? parseInt(his.recovered + 2) : parseInt(his.recovered)
     )
     let deceased = lastmanth && lastmanth.map(
-        his =>  parseInt(his.deceased)
+        his => parseInt(his.deceased)
     )
     let categories = lastmanth && lastmanth.map(
         his => new Date(his.lastUpdatedAtApify).toISOString().split('T')[0]
@@ -187,18 +188,18 @@ class index extends React.Component {
                     <div className="card-body">
                         <div className="row">
                             <div className="col-lg-6 col-6 border p-3 animated bounceInRight" style={{backgroundColor: 'rgb(204, 202, 202)'}}>
-                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'rgb(230, 12, 0)', textShadow: '1px 1px 0 #000'}}>{today &&  yesterday && this.numberWithCommas(today.infected - yesterday.infected) }</span>
+                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'rgb(230, 12, 0)', textShadow: '1px 1px 0 #000'}}>{today &&  yesterday && this.numberWithCommas(today.infected - yesterday.infected +85) }</span>
                                 <p className="card-text">أجمالي الحالات</p> 
                             </div>
                             <div className="col-lg-6 col-6 border p-3 animated bounceInLeft" style={{backgroundColor: 'rgb(204, 202, 202)'}}>
-                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'rgb(230, 152, 0)', textShadow: '1px 1px 0 #000'}}>{today && yesterday && this.numberWithCommas(today.active - yesterday.active)}</span>
+                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'rgb(230, 152, 0)', textShadow: '1px 1px 0 #000'}}>{today && yesterday && this.numberWithCommas(today.active - yesterday.active + 83)}</span>
                                 <p className="card-text">الحالات النشطة</p> 
                             </div>
                         </div>
                         <hr/>
                         <div className="row">
                             <div className="col-lg-6 col-6 border p-3 animated bounceInRight" style={{backgroundColor:'rgb(204, 202, 202)'}}>
-                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'green', textShadow: '1px 1px 0 #000'}}>{today && yesterday && this.numberWithCommas(today.recovered - yesterday.recovered)}</span>
+                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'green', textShadow: '1px 1px 0 #000'}}>{today && yesterday && this.numberWithCommas(today.recovered - yesterday.recovered + 2)}</span>
                                 <p className="card-text">أجمالي المتعافين</p> 
                             </div>
                             <div className="col-lg-6 col-6 border p-3 animated bounceInLeft" style={{backgroundColor:'rgb(204, 202, 202)'}}>
