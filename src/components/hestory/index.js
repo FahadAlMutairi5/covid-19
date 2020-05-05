@@ -36,8 +36,6 @@ class index extends React.Component {
         today = cityHestoryData[cityHestoryData.indexOf(mxDate)]
         yesterday = cityHestoryData[cityHestoryData.indexOf(mxDate) - 1]
     }
-    console.log(today)
-    console.log(yesterday)
     let lastmanth = cityHestoryData && cityHestoryData.map(
         his => his
     ).filter(fil => fil.lastUpdatedAtApify > "2020-05-01T00:00:00.000Z")

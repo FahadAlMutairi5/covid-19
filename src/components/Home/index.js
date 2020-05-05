@@ -9,7 +9,7 @@ class index extends React.Component {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
   render() {
-    let { fullData, loading } =  this.props.reports
+    let { fullData2, loading } =  this.props.reports
         if (loading) {
             return ( 
                 <div className="form-group col-lg-8 col-12 mx-auto my-5 text-center">
@@ -34,22 +34,22 @@ class index extends React.Component {
                     <div className="card-body">
                         <div className="row">
                             <div className="col-lg-6 col-6 border p-3 animated bounceInRight" style={{backgroundColor: 'rgb(204, 202, 202)'}}>
-                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'rgb(230, 12, 0)', textShadow: '1px 1px 0 #000'}}>{fullData && this.numberWithCommas(fullData.infected === 30160 ? fullData.infected+91 : fullData.infected)}</span>
+                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'rgb(230, 12, 0)', textShadow: '1px 1px 0 #000'}}>{fullData2 && this.numberWithCommas(fullData2.infected)}</span>
                                 <p className="card-text">أجمالي الحالات</p> 
                             </div>
                             <div className="col-lg-6 col-6 border p-3 animated bounceInLeft" style={{backgroundColor: 'rgb(204, 202, 202)'}}>
-                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'rgb(230, 152, 0)', textShadow: '1px 1px 0 #000'}}>{fullData && this.numberWithCommas(fullData.active === 24557 ? fullData.active+63 : fullData.active)}</span>
+                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'rgb(230, 152, 0)', textShadow: '1px 1px 0 #000'}}>{fullData2 && this.numberWithCommas(fullData2.active)}</span>
                                 <p className="card-text">الحالات النشطة</p> 
                             </div>
                         </div>
                         <hr/>
                         <div className="row">
                             <div className="col-lg-6 col-6 border p-3 animated bounceInRight" style={{backgroundColor:'rgb(204, 202, 202)'}}>
-                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'green', textShadow: '1px 1px 0 #000'}}>{fullData && this.numberWithCommas(fullData.recovered === 5403 ? fullData.recovered+28 : fullData.recovered)}</span>
+                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'green', textShadow: '1px 1px 0 #000'}}>{fullData2 && this.numberWithCommas(fullData2.recovered)}</span>
                                 <p className="card-text">أجمالي المتعافين</p> 
                             </div>
                             <div className="col-lg-6 col-6 border p-3 animated bounceInLeft" style={{backgroundColor:'rgb(204, 202, 202)'}}>
-                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'white', textShadow: '1px 1px 0 #000'}}>{fullData && this.numberWithCommas(fullData.deceased)}</span>
+                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'white', textShadow: '1px 1px 0 #000'}}>{fullData2 && this.numberWithCommas(fullData2.deceased)}</span>
                                 <p className="card-text">الوفيات</p> 
                             </div>
                         </div>     

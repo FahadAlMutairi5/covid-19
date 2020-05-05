@@ -5,6 +5,7 @@ const initialState = {
     filterData: null,
     data:null,
     fullData:null,
+    fullData2:null,
     loading: true,
     loadingH: true,
     hestoryData: null,
@@ -32,8 +33,7 @@ const reducer = (state = initialState, action) => {
           ...state,
           data: array,
           filterData: array,
-          fullData:dataR,
-          loading: false
+          fullData:dataR
         };
 
       case actionTypes.FETCH_HESTORY_COVID_19:
@@ -85,7 +85,12 @@ const reducer = (state = initialState, action) => {
             hestoryData:dataRHESTORY,
             loadingH: false
           };
-
+        case actionTypes.FETCH_ALL_COVID_19_2:
+            return {
+              ...state,
+              fullData2: action.payload,
+              loading: false
+            };
       default:
         return state;
     }
