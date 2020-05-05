@@ -36,19 +36,21 @@ class index extends React.Component {
         today = cityHestoryData[cityHestoryData.indexOf(mxDate)]
         yesterday = cityHestoryData[cityHestoryData.indexOf(mxDate) - 1]
     }
+    console.log(today)
+    console.log(yesterday)
     let lastmanth = cityHestoryData && cityHestoryData.map(
         his => his
     ).filter(fil => fil.lastUpdatedAtApify > "2020-05-01T00:00:00.000Z")
 
     let infected = lastmanth && lastmanth.map(
         
-        his => his.lastUpdatedAtApify === mxDate.lastUpdatedAtApify ? parseInt(his.infected === 28571 ? his.infected+85 : his.infected) : parseInt(his.infected )
+        his => his.lastUpdatedAtApify === mxDate.lastUpdatedAtApify ? parseInt(his.infected === 30160 ? his.infected+ 91 : his.infected) : parseInt(his.infected )
     )
     let active = lastmanth && lastmanth.map(
-        his => his.lastUpdatedAtApify === mxDate.lastUpdatedAtApify ? parseInt(his.active === 23906 ? his.active+83 : his.active) : parseInt(his.active)
+        his => his.lastUpdatedAtApify === mxDate.lastUpdatedAtApify ? parseInt(his.active === 24557 ? his.active+ 63 : his.active) : parseInt(his.active)
     )
     let recovered = lastmanth && lastmanth.map(
-        his => his.lastUpdatedAtApify === mxDate.lastUpdatedAtApify ? parseInt(his.recovered === 4474 ? his.recovered+2 : his.recovered) : parseInt(his.recovered)
+        his => his.lastUpdatedAtApify === mxDate.lastUpdatedAtApify ? parseInt(his.recovered === 5403 ? his.recovered+28 : his.recovered) : parseInt(his.recovered)
     )
     let deceased = lastmanth && lastmanth.map(
         his => parseInt(his.deceased)
@@ -188,18 +190,18 @@ class index extends React.Component {
                     <div className="card-body">
                         <div className="row">
                             <div className="col-lg-6 col-6 border p-3 animated bounceInRight" style={{backgroundColor: 'rgb(204, 202, 202)'}}>
-                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'rgb(230, 12, 0)', textShadow: '1px 1px 0 #000'}}>{today &&  yesterday && this.numberWithCommas(today.infected === 28571 ?  today.infected  - yesterday.infected +85 : today.infected  - yesterday.infected) }</span>
+                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'rgb(230, 12, 0)', textShadow: '1px 1px 0 #000'}}>{today &&  yesterday && this.numberWithCommas(today.infected === 30160 ?  today.infected  - yesterday.infected + 6 : today.infected  - yesterday.infected) }</span>
                                 <p className="card-text">أجمالي الحالات</p> 
                             </div>
                             <div className="col-lg-6 col-6 border p-3 animated bounceInLeft" style={{backgroundColor: 'rgb(204, 202, 202)'}}>
-                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'rgb(230, 152, 0)', textShadow: '1px 1px 0 #000'}}>{today && yesterday && this.numberWithCommas(today.active === 23906 ? today.active - yesterday.active + 83 : today.active - yesterday.active )}</span>
+                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'rgb(230, 152, 0)', textShadow: '1px 1px 0 #000'}}>{today && yesterday && this.numberWithCommas(today.active === 24557 ? today.active - yesterday.active - 20 : today.active - yesterday.active )}</span>
                                 <p className="card-text">الحالات النشطة</p> 
                             </div>
                         </div>
                         <hr/>
                         <div className="row">
                             <div className="col-lg-6 col-6 border p-3 animated bounceInRight" style={{backgroundColor:'rgb(204, 202, 202)'}}>
-                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'green', textShadow: '1px 1px 0 #000'}}>{today && yesterday && this.numberWithCommas(today.recovered === 2 ? today.recovered - yesterday.recovered + 2 : today.recovered - yesterday.recovered)}</span>
+                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'green', textShadow: '1px 1px 0 #000'}}>{today && yesterday && this.numberWithCommas(today.recovered === 5403 ? today.recovered - yesterday.recovered + 26 : today.recovered - yesterday.recovered)}</span>
                                 <p className="card-text">أجمالي المتعافين</p> 
                             </div>
                             <div className="col-lg-6 col-6 border p-3 animated bounceInLeft" style={{backgroundColor:'rgb(204, 202, 202)'}}>
@@ -218,7 +220,7 @@ class index extends React.Component {
                     <div className="card-body">
                         <div className="row">
                             <div className="col-lg-6 col-6 border p-3 animated bounceInRight" style={{backgroundColor: 'rgb(204, 202, 202)'}}>
-                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'rgb(230, 12, 0)', textShadow: '1px 1px 0 #000'}}>{yesterday && this.numberWithCommas(yesterday.infected)}</span>
+                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'rgb(230, 12, 0)', textShadow: '1px 1px 0 #000'}}>{yesterday && this.numberWithCommas(yesterday.infected + 85)}</span>
                                 <p className="card-text">أجمالي الحالات</p> 
                             </div>
                             <div className="col-lg-6 col-6 border p-3 animated bounceInLeft" style={{backgroundColor: 'rgb(204, 202, 202)'}}>
@@ -229,7 +231,7 @@ class index extends React.Component {
                         <hr/>
                         <div className="row">
                             <div className="col-lg-6 col-6 border p-3 animated bounceInRight" style={{backgroundColor:'rgb(204, 202, 202)'}}>
-                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'green', textShadow: '1px 1px 0 #000'}}>{yesterday && this.numberWithCommas(yesterday.recovered)}</span>
+                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'green', textShadow: '1px 1px 0 #000'}}>{yesterday && this.numberWithCommas(yesterday.recovered + 2)}</span>
                                 <p className="card-text">أجمالي المتعافين</p> 
                             </div>
                             <div className="col-lg-6 col-6 border p-3 animated bounceInLeft" style={{backgroundColor:'rgb(204, 202, 202)'}}>
