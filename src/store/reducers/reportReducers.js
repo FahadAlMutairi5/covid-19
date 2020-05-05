@@ -6,6 +6,7 @@ const initialState = {
     data:null,
     fullData:null,
     fullData2:null,
+    fullDataHis2: null,
     loading: true,
     loadingH: true,
     hestoryData: null,
@@ -85,12 +86,33 @@ const reducer = (state = initialState, action) => {
             hestoryData:dataRHESTORY,
             loadingH: false
           };
+
         case actionTypes.FETCH_ALL_COVID_19_2:
             return {
               ...state,
               fullData2: action.payload,
               loading: false
             };
+
+        case actionTypes.FETCH_HESTORY_COVID_19_2:
+            var obj2 = {};
+            let arrayH2 = action.payload
+            let arrayH3 = arrayH2.response.sort((a, b) => new Date(a.time) - new Date(b.time))
+            for ( let i=0; i < arrayH3.length; i++ ){
+              obj2[arrayH3[i]['day']] = arrayH3[i];
+            }
+            
+            arrayH3 = []
+  
+            for ( var key2 in obj2 )
+              arrayH3.push(obj2[key2]);
+
+
+            return {
+              ...state,
+              fullDataHis2: arrayH3,
+              // loading: false
+            };    
       default:
         return state;
     }

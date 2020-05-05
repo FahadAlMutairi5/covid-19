@@ -58,6 +58,7 @@ export const fetchHestoryReports = () => {
     try {
       let res = await instance.get("datasets/OeaEEGdhvUSkXRrWU/items?format=json&clean=1");
       const data = res.data;
+      dispatch(fetchHestoryReports2())
       dispatch({
         type: actionTypes.FETCH_HESTORY_COVID_19,
         payload: data
@@ -67,3 +68,20 @@ export const fetchHestoryReports = () => {
     }
   };
 };
+
+
+export const fetchHestoryReports2 = () => {
+  return async dispatch => {
+    try {
+      let res = await instance2.get("/history?country=Saudi-Arabia", {'headers': headers})
+      const data = res.data;
+      dispatch({
+        type: actionTypes.FETCH_HESTORY_COVID_19_2,
+        payload: data
+      });
+    } catch (error) {
+      console.log("Something went wrong with ", error);
+    }
+  };
+};
+
