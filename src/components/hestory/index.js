@@ -194,9 +194,9 @@ class index extends React.Component {
                     {
                         new Date(today && today.time).getHours() >= 15 ? new Date(today && today.time).getMinutes() >= 45 ?
                         <div></div> : <div className="col-12  text-right">
-                            <span className="" style={{fontSize:'10px', color:'red'}}>  لم تحدث البيانات من المصدر لهذا اليوم إلى الأن </span>
+                            <span className="" style={{fontSize:'10px', color:'red'}}>  لم يتم تحديث البيانات من المصدر لهذا اليوم إلى الأن </span>
                         </div> : <div className="col-12  text-right">
-                            <span className="" style={{fontSize:'10px', color:'red'}}>  لم تحدث البيانات من المصدر لهذا اليوم إلى الأن </span>
+                            <span className="" style={{fontSize:'10px', color:'red'}}>  لم يتم تحديث البيانات من المصدر لهذا اليوم إلى الأن </span>
                         </div>
                     }
 
