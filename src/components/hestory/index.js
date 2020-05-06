@@ -37,8 +37,8 @@ class index extends React.Component {
         today = fullDataHis2[fullDataHis2.indexOf(mxDate)]
         yesterday = fullDataHis2[fullDataHis2.indexOf(mxDate) - 1]
     }
-    console.log(new Date(today && today.time).getMinutes())
-    console.log(new Date(today && today.time).getHours())
+    // console.log(new Date(today && today.time).getMinutes())
+    // console.log(new Date(today && today.time).getHours())
     let lastmanth = fullDataHis2 && fullDataHis2.map(
         his => his
     ).filter(fil => fil.time > "2020-05-01T00:00:00.000Z")
@@ -192,10 +192,10 @@ class index extends React.Component {
                     </div>
 
                     {
-                        new Date(today && today.time).getHours() < 15 && new Date(today && today.time).getMinutes() < 45 && 
+                        new Date(today && today.time).getHours() <= 15 ? new Date(today && today.time).getMinutes() <= 45 ?
                         <div className="col-12  text-right">
                             <span className="" style={{fontSize:'10px', color:'red'}}>  لم تحدث البيانات من المصدر لهذا اليوم إلى الأن </span>
-                        </div>
+                        </div> : <div></div> : <div></div>
                     }
 
                 </div>
