@@ -191,14 +191,12 @@ class index extends React.Component {
                         <h5 style={{fontSize:'15px'}}>عدد حالات اليوم بتاريخ <span className="text-muted">{today && today.day} </span></h5>
                     </div>
 
-                    {/* {
-                        new Date(today && today.time).getHours() >= 15 ? new Date(today && today.time).getMinutes() >= 45 ?
-                        <div></div> : <div className="col-12  text-right">
+                    {
+                        today &&  yesterday && this.numberWithCommas(today.cases.total - yesterday.cases.total) === "0" && this.numberWithCommas(today.cases.active - yesterday.cases.active) === "0" && this.numberWithCommas(today.cases.recovered - yesterday.cases.recovered) === "0" && this.numberWithCommas(today.deaths.total - yesterday.deaths.total) === "0" ?
+                        <div className="col-12  text-right">
                             <span className="" style={{fontSize:'10px', color:'red'}}>  لم يتم تحديث البيانات من المصدر لهذا اليوم إلى الأن </span>
-                        </div> : <div className="col-12  text-right">
-                            <span className="" style={{fontSize:'10px', color:'red'}}>  لم يتم تحديث البيانات من المصدر لهذا اليوم إلى الأن </span>
-                        </div>
-                    } */}
+                        </div> : <div></div> 
+                    }
 
                 </div>
                 <div className="card mt-1">
