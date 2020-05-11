@@ -392,6 +392,16 @@ class index extends React.Component {
                     </div>
                 </div> 
                 <div className="row mt-2">
+                    <div className="card-body">
+                        <div className="text-right">
+                        <h5 style={{fontSize:'15px'}} > تفاصيل عدد الحالات اليومية لأخر خمسة أيام </h5>
+                        </div>
+                        <div className="col-12 mt-1 border p-١">
+                            <ReactApexChart options={optionRecordPerDay} series={seriesDRecordPerDay} type="bar" height={350} />
+                        </div>
+                    </div>
+                </div>
+                <div className="row mt-2">
                     <div className="col-10 mt-2 text-right">
                         <h5 style={{fontSize:'15px'}}>إجمالي عدد الحالات حتى تاريخ <span className="text-muted">{yesterday && yesterday.day} </span></h5> 
                     </div>
@@ -428,16 +438,6 @@ class index extends React.Component {
                         </div>
                         <div className="col-12 mt-1 border p-١">
                             <ReactApexChart options={option} series={seriesD} type="bar" height={350} />
-                        </div>
-                    </div>
-                </div>
-                <div className="row mt-2">
-                    <div className="card-body">
-                        <div className="text-right">
-                        <h5 style={{fontSize:'15px'}} > تفاصيل عدد الحالات اليومية لأخر خمسة أيام </h5>
-                        </div>
-                        <div className="col-12 mt-1 border p-١">
-                            <ReactApexChart options={optionRecordPerDay} series={seriesDRecordPerDay} type="bar" height={350} />
                         </div>
                     </div>
                 </div>
