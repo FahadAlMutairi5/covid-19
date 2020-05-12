@@ -62,7 +62,7 @@ class index extends React.Component {
     }
     // console.log(new Date(today && today.time).getMinutes())
     // console.log(new Date(today && today.time).getHours())
-    var days = 5; // Days you want to subtract
+    var days = 6; // Days you want to subtract
     var date = new Date();
     var last = new Date(date.getTime() - (days * 24 * 60 * 60 * 1000));
     var month = last.getMonth()+1 < 10 ? `0${last.getMonth()+1}` : last.getMonth()+1;
@@ -394,7 +394,7 @@ class index extends React.Component {
                 <div className="row mt-2">
                     <div className="card-body">
                         <div className="text-right">
-                        <h5 style={{fontSize:'15px'}} > تفاصيل عدد الحالات اليومية لأخر خمسة أيام </h5>
+                        <h5 style={{fontSize:'15px'}} > تفاصيل عدد الحالات اليومية لهذا الأسبوع الحالي </h5>
                         </div>
                         <div className="col-12 mt-1 border p-١">
                             <ReactApexChart options={optionRecordPerDay} series={seriesDRecordPerDay} type="bar" height={350} />
