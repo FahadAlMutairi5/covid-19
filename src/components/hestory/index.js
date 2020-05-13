@@ -33,7 +33,7 @@ class index extends React.Component {
          mxDate = fullDataHis2.reduce(function (a, b) { 
             return a.time > b.time ? a : b; 
         }); 
-        today = fullDataHis2[fullDataHis2.indexOf(mxDate)]
+        today = fullDataHis2[fullDataHis2.indexOf(mxDate) ]
         yesterday = fullDataHis2[fullDataHis2.indexOf(mxDate) - 1]
     }
     let recordPerDay = [];
@@ -62,21 +62,49 @@ class index extends React.Component {
     }
     // console.log(new Date(today && today.time).getMinutes())
     // console.log(new Date(today && today.time).getHours())
-    var days = 4; // Days you want to subtract
+    var days = 5; // Days you want to subtract
     var date = new Date();
     var last = new Date(date.getTime() - (days * 24 * 60 * 60 * 1000));
     var month = last.getMonth()+1 < 10 ? `0${last.getMonth()+1}` : last.getMonth()+1;
     var day = last.getDate() < 10 ? `0${last.getDate()}` : last.getDate();
     let lastSt = `${last.getFullYear()}-${month}-${day}`
     // console.log(lastSt)
-    let lastmanth = fullDataHis2 && fullDataHis2.map(
+    let lastmanth = []
+    if (fullDataHis2){
+        for (let i=0 ; i<fullDataHis2.length; i++){
+            if (fullDataHis2[i].time > "2020-05-01T00:00:00.000Z" && fullDataHis2[i].day !== '2020-05-12'){
+                if (fullDataHis2[i].day === '2020-05-13'){
+                    fullDataHis2[i].day = '2020-05-12'
+                    lastmanth.push(fullDataHis2[i])
+                }else{
+                    lastmanth.push(fullDataHis2[i])
+                }
+            }
+        }
+    }
+    fullDataHis2 && fullDataHis2.map(
         his => his
-    ).filter(fil => fil.time > "2020-05-01T00:00:00.000Z")
+    ).filter(fil => fil.time > "2020-05-01T00:00:00.000Z" && fil.day !== '2020-05-12')
+    
+    
+    let lastmanthRecordPerDay = []
 
-    let lastmanthRecordPerDay = recordPerDay && recordPerDay.map(
-        his => his
-    ).filter(fil => fil.day >= lastSt)
-    // console.log(lastmanthRecordPerDay)
+    // recordPerDay && recordPerDay.map(
+    //     his => his
+    // ).filter(fil => fil.day >= lastSt && fil.day)
+    if (recordPerDay){
+        for (let i=0 ; i<recordPerDay.length; i++){
+            if (recordPerDay[i].day >= lastSt && recordPerDay[i].day !== '2020-05-12'){
+                if (recordPerDay[i].day === '2020-05-13'){
+                    recordPerDay[i].day = '2020-05-12'
+                    lastmanthRecordPerDay.push(recordPerDay[i])
+                }else{
+                    lastmanthRecordPerDay.push(recordPerDay[i])
+                }
+            }
+        }
+    }
+
     let infected = lastmanth && lastmanth.map(
         
         his => parseInt(his.cases.total < 0 ? 0 : his.cases.total)
@@ -355,7 +383,7 @@ class index extends React.Component {
                 </div>
                 <div className="row mt-3">
                     <div className="col-10 mt-2 text-right">
-                        <h5 style={{fontSize:'15px'}}>عدد حالات اليوم بتاريخ <span className="text-muted">{today && today.day} </span></h5>
+                        <h5 style={{fontSize:'15px'}}>عدد حالات اليوم بتاريخ <span className="text-muted">{today && today.day === '2020-05-13' ? '2020-05-12' : today.day} </span></h5>
                     </div>
 
                     {
