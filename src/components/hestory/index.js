@@ -25,37 +25,37 @@ class index extends React.Component {
 
   render() {
     
-    let {  fullDataHis2 } =  this.props.reports
+    let {  cityHestoryData, fullDataHis2 } =  this.props.reports
     let mxDate ;
     let yesterday;
     let today;
-    if (fullDataHis2){
-         mxDate = fullDataHis2.reduce(function (a, b) { 
-            return a.time > b.time ? a : b; 
+    if (cityHestoryData){
+         mxDate = cityHestoryData.reduce(function (a, b) { 
+            return a.lastUpdatedAtApify > b.lastUpdatedAtApify ? a : b; 
         }); 
-        today = fullDataHis2[fullDataHis2.indexOf(mxDate) ]
-        yesterday = fullDataHis2[fullDataHis2.indexOf(mxDate) - 1]
+        today = cityHestoryData[cityHestoryData.indexOf(mxDate) ]
+        yesterday = cityHestoryData[cityHestoryData.indexOf(mxDate) - 1]
     }
     let recordPerDay = [];
 
-    if (fullDataHis2){
-        for (let i = 0; i < fullDataHis2.length ; i++){
+    if (cityHestoryData){
+        for (let i = 0; i < cityHestoryData.length ; i++){
             let obje = {};
             if (i===0){
-                obje['day'] = fullDataHis2[i].day;
-                obje['time'] = fullDataHis2[i].time;
-                obje['total'] = fullDataHis2[i].cases.total - 0 
-                obje['active'] = fullDataHis2[i].cases.active - 0 
-                obje['recovered'] = fullDataHis2[i].cases.recovered - 0 
-                obje['deceased'] = fullDataHis2[i].deaths.total - 0 
+                obje['day'] = cityHestoryData[i].date;
+                obje['time'] = cityHestoryData[i].lastUpdatedAtApify;
+                obje['total'] = cityHestoryData[i].infected - 0 
+                obje['active'] = cityHestoryData[i].active - 0 
+                obje['recovered'] = cityHestoryData[i].recovered - 0 
+                obje['deceased'] = cityHestoryData[i].deceased - 0 
                 recordPerDay.push(obje)
             }else{
-                obje['day'] = fullDataHis2[i].day;
-                obje['time'] = fullDataHis2[i].time;
-                obje['total'] = fullDataHis2[i].cases.total - fullDataHis2[i-1].cases.total 
-                obje['active'] = fullDataHis2[i].cases.active - fullDataHis2[i-1].cases.active 
-                obje['recovered'] = fullDataHis2[i].cases.recovered - fullDataHis2[i-1].cases.recovered 
-                obje['deceased'] = fullDataHis2[i].deaths.total - fullDataHis2[i-1].deaths.total 
+                obje['day'] = cityHestoryData[i].date;
+                obje['time'] = cityHestoryData[i].lastUpdatedAtApify;
+                obje['total'] = cityHestoryData[i].infected - cityHestoryData[i-1].infected 
+                obje['active'] = cityHestoryData[i].active - cityHestoryData[i-1].active 
+                obje['recovered'] = cityHestoryData[i].recovered - cityHestoryData[i-1].recovered 
+                obje['deceased'] = cityHestoryData[i].deceased - cityHestoryData[i-1].deceased 
                 recordPerDay.push(obje)
             }
         }
@@ -69,9 +69,9 @@ class index extends React.Component {
     var day = last.getDate() < 10 ? `0${last.getDate()}` : last.getDate();
     let lastSt = `${last.getFullYear()}-${month}-${day}`
     // console.log(lastSt)
-    let lastmanth = fullDataHis2 && fullDataHis2.map(
+    let lastmanth = cityHestoryData && cityHestoryData.map(
         his => his
-    ).filter(fil => fil.time > "2020-05-01T00:00:00.000Z")
+    ).filter(fil => fil.lastUpdatedAtApify > "2020-05-01T00:00:00.000Z")
     
     // if (fullDataHis2){
     //     for (let i=0 ; i<fullDataHis2.length; i++){
@@ -106,7 +106,7 @@ class index extends React.Component {
 
     let infected = lastmanth && lastmanth.map(
         
-        his => parseInt(his.cases.total < 0 ? 0 : his.cases.total)
+        his => parseInt(his.infected < 0 ? 0 : his.infected)
     )
 
     let infectedRecordPerDay = lastmanthRecordPerDay && lastmanthRecordPerDay.map(
@@ -115,7 +115,7 @@ class index extends React.Component {
     )
 
     let active = lastmanth && lastmanth.map(
-        his => parseInt(his.cases.active < 0 ? 0 : his.cases.active)
+        his => parseInt(his.active < 0 ? 0 : his.active)
     )
 
     let activeRecordPerDay = lastmanthRecordPerDay && lastmanthRecordPerDay.map(
@@ -123,7 +123,7 @@ class index extends React.Component {
     )
 
     let recovered = lastmanth && lastmanth.map(
-        his => parseInt(his.cases.recovered < 0 ? 0 : his.cases.recovered)
+        his => parseInt(his.recovered < 0 ? 0 : his.recovered)
     )
 
     let recoveredRecordPerDay = lastmanthRecordPerDay && lastmanthRecordPerDay.map(
@@ -131,7 +131,7 @@ class index extends React.Component {
     )
 
     let deceased = lastmanth && lastmanth.map(
-        his => parseInt(his.deaths.total < 0 ? 0 : his.deaths.total)
+        his => parseInt(his.deceased < 0 ? 0 : his.deceased)
     )
 
     let deceasedRecordPerDay = lastmanthRecordPerDay && lastmanthRecordPerDay.map(
@@ -139,7 +139,7 @@ class index extends React.Component {
     )
 
     let categories = lastmanth && lastmanth.map(
-        his => his.day
+        his => his.date
     )
 
     let categoriesRecordPerDay = lastmanthRecordPerDay && lastmanthRecordPerDay.map(
@@ -382,11 +382,11 @@ class index extends React.Component {
                 </div>
                 <div className="row mt-3">
                     <div className="col-10 mt-2 text-right">
-                        <h5 style={{fontSize:'15px'}}>عدد حالات اليوم بتاريخ <span className="text-muted">{today && today.day} </span></h5>
+                        <h5 style={{fontSize:'15px'}}>عدد حالات اليوم بتاريخ <span className="text-muted">{today && today.date} </span></h5>
                     </div>
 
                     {
-                        today &&  yesterday && this.numberWithCommas(today.cases.total - yesterday.cases.total) === "0" && this.numberWithCommas(today.cases.active - yesterday.cases.active) === "0" && this.numberWithCommas(today.cases.recovered - yesterday.cases.recovered) === "0" && this.numberWithCommas(today.deaths.total - yesterday.deaths.total) === "0" ?
+                        today &&  yesterday && this.numberWithCommas(today.infected - yesterday.infected) === "0" && this.numberWithCommas(today.active - yesterday.active) === "0" && this.numberWithCommas(today.recovered - yesterday.recovered) === "0" && this.numberWithCommas(today.deceased - yesterday.deceased) === "0" ?
                         <div className="col-12  text-right">
                             <span className="" style={{fontSize:'10px', color:'red'}}>  لم يتم تحديث البيانات من المصدر لهذا اليوم إلى الأن </span>
                         </div> : <div></div> 
@@ -397,22 +397,22 @@ class index extends React.Component {
                     <div className="card-body">
                         <div className="row">
                             <div className="col-lg-6 col-6 border p-3 animated bounceInRight" style={{backgroundColor: 'rgb(204, 202, 202)'}}>
-                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'rgb(230, 12, 0)', textShadow: '1px 1px 0 #000'}}>{today &&  yesterday && this.numberWithCommas(today.cases.total - yesterday.cases.total < 0 ? 0 : today.cases.total - yesterday.cases.total) }</span>
+                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'rgb(230, 12, 0)', textShadow: '1px 1px 0 #000'}}>{today &&  yesterday && this.numberWithCommas(today.infected - yesterday.infected < 0 ? 0 : today.infected - yesterday.infected) }</span>
                                 <p className="card-text">أجمالي الحالات</p> 
                             </div>
                             <div className="col-lg-6 col-6 border p-3 animated bounceInLeft" style={{backgroundColor: 'rgb(204, 202, 202)'}}>
-                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'rgb(230, 152, 0)', textShadow: '1px 1px 0 #000'}}>{today && yesterday && this.numberWithCommas(today.cases.active - yesterday.cases.active < 0 ? 0 : today.cases.active - yesterday.cases.active)}</span>
+                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'rgb(230, 152, 0)', textShadow: '1px 1px 0 #000'}}>{today && yesterday && this.numberWithCommas(today.active - yesterday.active < 0 ? 0 : today.active - yesterday.active)}</span>
                                 <p className="card-text">الحالات النشطة</p> 
                             </div>
                         </div>
                         <hr/>
                         <div className="row">
                             <div className="col-lg-6 col-6 border p-3 animated bounceInRight" style={{backgroundColor:'rgb(204, 202, 202)'}}>
-                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'green', textShadow: '1px 1px 0 #000'}}>{today && yesterday && this.numberWithCommas(today.cases.recovered - yesterday.cases.recovered < 0 ? 0 : today.cases.recovered - yesterday.cases.recovered )}</span>
+                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'green', textShadow: '1px 1px 0 #000'}}>{today && yesterday && this.numberWithCommas(today.recovered - yesterday.recovered < 0 ? 0 : today.recovered - yesterday.recovered )}</span>
                                 <p className="card-text">أجمالي المتعافين</p> 
                             </div>
                             <div className="col-lg-6 col-6 border p-3 animated bounceInLeft" style={{backgroundColor:'rgb(204, 202, 202)'}}>
-                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'white', textShadow: '1px 1px 0 #000'}}>{today && yesterday && this.numberWithCommas(today.deaths.total - yesterday.deaths.total < 0 ? 0 : today.deaths.total - yesterday.deaths.total)}</span>
+                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'white', textShadow: '1px 1px 0 #000'}}>{today && yesterday && this.numberWithCommas(today.deceased- yesterday.deceased< 0 ? 0 : today.deceased- yesterday.deceased)}</span>
                                 <p className="card-text">الوفيات</p> 
                             </div>
                         </div>     
@@ -437,22 +437,22 @@ class index extends React.Component {
                     <div className="card-body">
                         <div className="row">
                             <div className="col-lg-6 col-6 border p-3 animated bounceInRight" style={{backgroundColor: 'rgb(204, 202, 202)'}}>
-                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'rgb(230, 12, 0)', textShadow: '1px 1px 0 #000'}}>{yesterday && this.numberWithCommas(yesterday.cases.total)}</span>
+                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'rgb(230, 12, 0)', textShadow: '1px 1px 0 #000'}}>{yesterday && this.numberWithCommas(yesterday.infected)}</span>
                                 <p className="card-text">أجمالي الحالات</p> 
                             </div>
                             <div className="col-lg-6 col-6 border p-3 animated bounceInLeft" style={{backgroundColor: 'rgb(204, 202, 202)'}}>
-                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'rgb(230, 152, 0)', textShadow: '1px 1px 0 #000'}}>{yesterday && this.numberWithCommas(yesterday.cases.active)}</span>
+                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'rgb(230, 152, 0)', textShadow: '1px 1px 0 #000'}}>{yesterday && this.numberWithCommas(yesterday.active)}</span>
                                 <p className="card-text">الحالات النشطة</p> 
                             </div>
                         </div>
                         <hr/>
                         <div className="row">
                             <div className="col-lg-6 col-6 border p-3 animated bounceInRight" style={{backgroundColor:'rgb(204, 202, 202)'}}>
-                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'green', textShadow: '1px 1px 0 #000'}}>{yesterday && this.numberWithCommas(yesterday.cases.recovered)}</span>
+                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'green', textShadow: '1px 1px 0 #000'}}>{yesterday && this.numberWithCommas(yesterday.recovered)}</span>
                                 <p className="card-text">أجمالي المتعافين</p> 
                             </div>
                             <div className="col-lg-6 col-6 border p-3 animated bounceInLeft" style={{backgroundColor:'rgb(204, 202, 202)'}}>
-                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'white', textShadow: '1px 1px 0 #000'}}>{yesterday && this.numberWithCommas(yesterday.deaths.total)}</span>
+                                <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'white', textShadow: '1px 1px 0 #000'}}>{yesterday && this.numberWithCommas(yesterday.deceased)}</span>
                                 <p className="card-text">الوفيات</p> 
                             </div>
                         </div>     
