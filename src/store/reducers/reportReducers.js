@@ -80,7 +80,7 @@ const reducer = (state = initialState, action) => {
           for ( var key in obj )
             arrayH.push(obj[key]);
 
-          console.log("1",arrayH)
+          // console.log("1",arrayH)
 
           return {
             ...state,
@@ -126,7 +126,7 @@ const reducer = (state = initialState, action) => {
             // let obj128 = arrayH3.indexOf(arrayH3.filter(fil => fil.time === '2020-05-12T12:45:05+00:00')[0])
             // objec128.day = '2020-05-12'
             // arrayH3[51] = objec128
-            console.log("2",arrayH3)
+            // console.log("2",arrayH3)
             // console.log(obj128)
             // console.log(obj128Old)
             // console.log(arrayH3[obj128Old])
