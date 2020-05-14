@@ -98,7 +98,8 @@ const reducer = (state = initialState, action) => {
             var obj2 = {};
             let arrayH2 = action.payload
             let arrayH3 = arrayH2.response.sort((a, b) => new Date(a.time) - new Date(b.time))
-            let objec128 = arrayH3[108]
+            console.log(arrayH3)
+            // let objec128 = arrayH3[108]
 
             for ( let i=0; i < arrayH3.length; i++ ){
               obj2[arrayH3[i]['day']] = arrayH3[i];
@@ -108,11 +109,21 @@ const reducer = (state = initialState, action) => {
   
             for ( var key2 in obj2 )
               arrayH3.push(obj2[key2]);
+
+            arrayH3.splice(51, 1)
+
+            let objec128 = arrayH3[51]
+            objec128.day = '2020-05-12'
+
+            let objec138 = arrayH3[52]
+            objec138.day = '2020-05-13'
+
+            // arrayH3[51] = objec128
+            // arrayH3[52] = objec138
             // let obj128Old = arrayH3.indexOf(arrayH3.filter(fil => fil.day === '2020-05-12')[0])
             // let obj128 = arrayH3.indexOf(arrayH3.filter(fil => fil.time === '2020-05-12T12:45:05+00:00')[0])
-            // arrayH3.splice(51, 1)
-            objec128.day = '2020-05-12'
-            arrayH3[51] = objec128
+            // objec128.day = '2020-05-12'
+            // arrayH3[51] = objec128
             console.log(arrayH3)
             // console.log(obj128)
             // console.log(obj128Old)
