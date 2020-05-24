@@ -34,7 +34,8 @@ const reducer = (state = initialState, action) => {
           ...state,
           data: array,
           filterData: array,
-          fullData:dataR
+          fullData:dataR,
+          loading: false
         };
 
       case actionTypes.FETCH_HESTORY_COVID_19:

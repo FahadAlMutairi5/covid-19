@@ -25,7 +25,7 @@ class index extends React.Component {
 
   render() {
     
-    let {  cityHestoryData, fullDataHis2 } =  this.props.reports
+    let {  cityHestoryData } =  this.props.reports
     let mxDate ;
     let yesterday;
     let today;
@@ -421,7 +421,7 @@ class index extends React.Component {
                 <div className="row mt-2">
                     <div className="card-body">
                         <div className="text-right">
-                        <h5 style={{fontSize:'15px'}} > تفاصيل عدد الحالات اليومية لأخر خمسة أيام </h5>
+                        <h5 style={{fontSize:'15px'}} > تفاصيل عدد الحالات اليومية  </h5>
                         </div>
                         <div className="col-12 mt-1 border p-١">
                             <ReactApexChart options={optionRecordPerDay} series={seriesDRecordPerDay} type="bar" height={350} />
