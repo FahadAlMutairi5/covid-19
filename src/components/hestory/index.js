@@ -430,7 +430,7 @@ class index extends React.Component {
                 </div>
                 <div className="row mt-2">
                     <div className="col-10 mt-2 text-right">
-                        <h5 style={{fontSize:'15px'}}>إجمالي عدد الحالات حتى تاريخ <span className="text-muted">{yesterday && yesterday.day} </span></h5> 
+                        <h5 style={{fontSize:'15px'}}>إجمالي عدد الحالات حتى تاريخ <span className="text-muted">{yesterday && yesterday.date} </span></h5> 
                     </div>
                 </div>
                 <div className="card mt-1">
