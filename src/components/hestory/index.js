@@ -28,12 +28,12 @@ class index extends React.Component {
     let {  cityHestoryData } =  this.props.reports
     let mxDate ;
     let yesterday;
-    let today;
+    // let today;
     if (cityHestoryData){
          mxDate = cityHestoryData.reduce(function (a, b) { 
             return a.lastUpdatedAtApify > b.lastUpdatedAtApify ? a : b; 
         }); 
-        today = cityHestoryData[cityHestoryData.indexOf(mxDate) ]
+        // today = cityHestoryData[cityHestoryData.indexOf(mxDate) ]
         yesterday = cityHestoryData[cityHestoryData.indexOf(mxDate) - 1]
     }
     let recordPerDay = [];
@@ -380,7 +380,7 @@ class index extends React.Component {
                         <h5 className="card-title">إحصائيات</h5> 
                     </div>
                 </div>
-                <div className="row mt-3">
+                {/* <div className="row mt-3">
                     <div className="col-10 mt-2 text-right">
                         <h5 style={{fontSize:'15px'}}>عدد حالات اليوم بتاريخ <span className="text-muted">{today && today.date} </span></h5>
                     </div>
@@ -393,8 +393,8 @@ class index extends React.Component {
                     }
 
                 </div>
-                <div className="card mt-1">
-                    <div className="card-body">
+                <div className="card mt-1"> */}
+                    {/* <div className="card-body">
                         <div className="row">
                             <div className="col-lg-6 col-6 border p-3 animated bounceInRight" style={{backgroundColor: 'rgb(204, 202, 202)'}}>
                                 <span style={{fontSize:'1.8rem', fontWeight:'bold', color:'rgb(230, 12, 0)', textShadow: '1px 1px 0 #000'}}>{today &&  yesterday && this.numberWithCommas(today.infected - yesterday.infected < 0 ? 0 : today.infected - yesterday.infected) }</span>
@@ -417,7 +417,7 @@ class index extends React.Component {
                             </div>
                         </div>     
                     </div>
-                </div> 
+                </div>  */}
                 <div className="row mt-2">
                     <div className="card-body">
                         <div className="text-right">
