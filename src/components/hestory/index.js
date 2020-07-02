@@ -69,7 +69,7 @@ class index extends React.Component {
     // console.log(lastSt)
     let lastmanth = cityHestoryData && cityHestoryData.map(
         his => his
-    ).filter(fil => fil.lastUpdatedAtApify > "2020-06-01T00:00:00.000Z")
+    ).filter(fil => fil.lastUpdatedAtApify > "2020-07-01T00:00:00.000Z")
     
     // if (fullDataHis2){
     //     for (let i=0 ; i<fullDataHis2.length; i++){
